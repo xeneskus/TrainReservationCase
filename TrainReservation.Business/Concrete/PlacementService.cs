@@ -36,21 +36,26 @@ public class PlacementService : IPlacementService
         List<Placement> placements = new List<Placement>();
         var availableSeats = _wagonService.GetAvailableSeatsInAllWagons(wagons);
         var placedWagons = new Dictionary<string, int>();
+        var TotalAvableSeats = availableSeats.Sum(a => a.Value);
 
+        if (TotalAvableSeats <= 0)
+        {
+            return placements;
+        }
         while (numberOfPeople > 0)
         {
-            foreach (var wagon in availableSeats.Keys.ToList())
+            foreach (var wagon in availableSeats)
             {
-                if (availableSeats[wagon] > 0)
+                if (wagon.Value > 0)
                 {
                     if (numberOfPeople <= 0) break;
-                    if (!placedWagons.ContainsKey(wagon))
+                    if (!placedWagons.ContainsKey(wagon.Key))
                     {
-                        placedWagons[wagon] = 0;
+                        placedWagons[wagon.Key] = 0;
                     }
-                    placedWagons[wagon]++;
+                    placedWagons[wagon.Key]++;
                     numberOfPeople--;
-                    availableSeats[wagon]--;
+                    availableSeats[wagon.Key]--;
                 }
             }
         }
