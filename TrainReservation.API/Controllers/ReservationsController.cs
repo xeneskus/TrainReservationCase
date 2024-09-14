@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using TrainReservation.Services.Interfaces;
 using TrainReservation.Models;
+using TrainReservation.Services.Interfaces;
 
 namespace TrainReservation.API.Controllers
 {

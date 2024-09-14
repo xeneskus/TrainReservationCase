@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using TrainReservation.Models;
+﻿using TrainReservation.Models;
 
 namespace TrainReservation.Services.Interfaces
 {

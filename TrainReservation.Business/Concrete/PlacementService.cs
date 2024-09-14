@@ -36,9 +36,9 @@ public class PlacementService : IPlacementService
         List<Placement> placements = new List<Placement>();
         var availableSeats = _wagonService.GetAvailableSeatsInAllWagons(wagons);
         var placedWagons = new Dictionary<string, int>();
-        var TotalAvableSeats = availableSeats.Sum(a => a.Value);
+        var totalAvailableSeats = availableSeats.Sum(a => a.Value);
 
-        if (TotalAvableSeats <= 0)
+        if (totalAvailableSeats <= 0)
         {
             return placements;
         }
